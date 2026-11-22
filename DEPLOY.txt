@@ -1,0 +1,22 @@
+Deploy FindBack (Flask + SQLite)
+
+Environment variables (set these on the host):
+  FINDBACK_SECRET          long random string (keeps logins valid across restarts)
+  FINDBACK_ADMIN_EMAIL     your admin email
+  FINDBACK_ADMIN_PASSWORD  your admin password (change the default!)
+  FINDBACK_DB              path to the database file on a persistent disk, e.g. /data/findback.db
+
+Start command:
+  gunicorn app:app --workers 1 --threads 4 --bind 0.0.0.0:$PORT
+(keep workers at 1 because the database is SQLite)
+
+Render.com (easy):
+  1. Push this folder to a GitHub repo.
+  2. New > Web Service > pick the repo. Build: pip install -r requirements.txt  Start: the command above.
+  3. Add the environment variables. Add a Disk (mount /data) and set FINDBACK_DB=/data/findback.db.
+     Without a disk the database and photos reset on every deploy.
+
+PythonAnywhere (free, simple):
+  1. Upload the folder, open a Bash console: pip install --user -r requirements.txt
+  2. Web tab > Add new web app > Flask, point the WSGI file to: from app import app as application
+  3. Set the environment variables in the WSGI file with os.environ[...] before the import.

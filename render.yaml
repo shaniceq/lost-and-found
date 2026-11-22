@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: findback
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1 --threads 4 --bind 0.0.0.0:$PORT
+    disk:
+      name: findback-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: FINDBACK_SECRET
+        generateValue: true
+      - key: FINDBACK_DB
+        value: /data/findback.db
+      - key: FINDBACK_ADMIN_EMAIL
+        sync: false
+      - key: FINDBACK_ADMIN_PASSWORD
+        sync: false

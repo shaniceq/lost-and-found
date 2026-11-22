@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>DocuAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}" />
+</head>
+<body class="auth-page">
+<div class="auth-frame">
+
+  <aside class="auth-side">
+
+    <div class="auth-art">
+      <span class="art-sparkle one">✦</span>
+      <span class="art-sparkle two">✦</span>
+      <div class="auth-document" aria-hidden="true"><span>YOUR NEXT OPPORTUNITY</span><strong>DocuAI</strong><small>Professional profile</small><i></i><i></i><b>EXPERIENCE</b><i></i><i></i><i></i><b>EDUCATION</b><i></i><i></i><em>Made with DocuAI</em></div>
+      <h2>Your next document starts with a conversation.</h2>
+      <p>Create resumes, CVs, and professional letters with DocuAI. Review your draft, choose a layout, then save or export it.</p>
+    </div>
+  </aside>
+
+  <main class="auth-main">
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-mobile-brand">
+        <div class="robot-mark robot-mark-small"><span class="robot-antenna"></span><div class="robot-face"><span></span><span></span></div></div>
+        <span class="brand-name">Docu<span>AI</span></span>
+      </div>
+
+      <div class="auth-tabs" role="group" aria-label="Account action">
+        <button type="button" id="tab-login" aria-pressed="true" data-mode="login">Log in</button>
+        <button type="button" id="tab-signup" aria-pressed="false" data-mode="signup">Create account</button>
+      </div>
+
+      <h1 id="auth-title">Welcome back</h1>
+      <p class="auth-lead" id="auth-lead">Log in to open your saved documents.</p>
+
+      <form id="auth-form" novalidate>
+        <div class="field" id="field-name" hidden>
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="60" />
+          <small class="field-error" id="name-error" hidden></small>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required />
+          <small class="field-error" id="email-error" hidden></small>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" maxlength="200" required />
+            <button type="button" id="toggle-password" class="ghost-button" aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.94 17.94A10.9 10.9 0 0 1 12 19C5 19 1 12 1 12a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A10.9 10.9 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg></button>
+          </div>
+          <small class="field-hint" id="password-hint" hidden>Use at least 8 characters.</small>
+          <small class="field-error" id="password-error" hidden></small>
+        </div>
+
+        <p class="auth-error" id="auth-error" role="alert" hidden></p>
+
+        <button type="submit" class="button-primary auth-submit" id="auth-submit">Log in</button>
+      </form>
+
+      <p class="auth-switch" id="auth-switch">
+        New to DocuAI? <button type="button" class="link-button" data-mode="signup">Create an account</button>
+      </p>
+    </section>
+  </main>
+
+</div>
+<script src="{{ url_for('static', filename='auth.js') }}"></script>
+</body>
+</html>
